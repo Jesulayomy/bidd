@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<%- include('chunks/head.ejs') %>
+<body>
+  <%- include('chunks/navbar.ejs') %>
+
+	<div class="px-4 py-2"><a class="btn" href="/home"><span class="fa fa-backward"></span> Back to all items</a></div>
+  <div class="container mt-4">
+    <h1>Add New Item</h1>
+    <!-- 
+    _id
+  
+    name
+    "Starry Nights by VVG"
+    imgURL
+    "/img/starry.png"
+    basePrice
+    700
+    highestBid
+    17900
+    highestBidder
+
+    bids
+     -->
+
+    <form action="/items/new" method="POST">
+      <div class="input-group mb-3">
+        <label class="input-group-text" id="name">Name</label>
+        <input type="text" class="form-control" placeholder="Bo'ohohwohtoh" aria-label="Name" aria-describedby="name" name="name" required>
+      </div>
+
+      <div class="input-group mb-3">
+        <label class="input-group-text" id="description">Description</label>
+        <textarea class="form-control" placeholder="Reinvigourates your life force..." aria-label="Description" aria-describedby="description" name="description"></textarea>
+      </div>
+
+      <div class="input-group mb-3">
+        <label class="input-group-text" id="imageURL">Image URL</label>
+        <input type="text" class="form-control"  placeholder="https://img.com/water" aria-label="Image URL" aria-describedby="imageURL"  name="imageURL">
+      </div>
+
+      <div class="input-group mb-3">
+        <label class="input-group-text" id="basePrice">Base Price</label>
+        <input type="number" class="form-control" value="10" aria-label="Base Price" aria-describedby="basePrice" name="basePrice" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add Item</button>
+    </form>
+  </div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</body>
+</html>

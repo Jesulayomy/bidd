@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<%- include('chunks/head.ejs') %>
+<body>
+  <%- include('chunks/navbar.ejs') %>
+  <div class="container">
+    <div class="page-header text-center">
+      <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+      <!-- LOCAL INFORMATION -->
+      <div class="col-sm-6">
+        <div class="well">
+          <h3><span class="fa fa-user"></span> Local</h3>
+          <% if (user.email) { %>
+            <p>
+              <strong>id</strong>: <%= user._id %><br>
+              <strong>email</strong>: <%= user.email %><br>
+              <strong>password</strong>: <%= user.password %>
+            </p>
+            <a href="/unlink" class="btn btn-default">Unlink</a>
+          <% } else { %>
+            <a href="/connect" class="btn btn-default">Connect Local</a>
+          <% } %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <h3>Messages</h3>
+        <ul class="messages">
+        <% for(var i=0; i<messages.length; i++) {%>
+          <li class="message">
+            <span><%= messages[i].name %></span>
+            <span><%= messages[i].msg %></span>
+            <span><%= messages[i].thumbUp %></span>
+            <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+            <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+            <span><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+          </li>
+        <% } %>
+        </ul>
+
+        <h2>Add a message</h2>
+        <% if (user.local.email) { %>
+          <form action="/messages" method="POST">
+            <input type="text" value="<%= user.local.email %>" name="name">
+            <input type="text" placeholder="message" name="msg">
+            <button type="submit">Submit</button>
+          </form>
+        <% } %>
+      </div>
+    </div>
+  </div>
+  <script src="js/main.js"></script>
+</body>
+</html>
